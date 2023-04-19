@@ -1,7 +1,9 @@
 let gameBoard = document.querySelector(".game-board"),
   scoreElement = document.querySelector(".score"),
   highScoreElement = document.querySelector(".high-score"),
-  arrowBtns = document.querySelectorAll(".controls i");
+  arrowBtns = document.querySelectorAll(".controls i"),
+  snakeBiteAudio = new Audio('./sound/snakehit.mp3');
+  gameOverAudio = new Audio('./sound/gameover.mp3');
 
 let isGameOver = false,
   setIntervalId,
@@ -51,6 +53,7 @@ arrowBtns.forEach((btn) => {
 // Game Over Function
 const handleGameOver = () => {
   clearInterval(setIntervalId);
+  gameOverAudio.play();
   alert("Game over..! Press OK to replay");
   location.reload();
 };
@@ -70,6 +73,7 @@ const initFood = () => {
 
   // Checking snake hits the food that time change the food position and add snakeBody
   if (snakeX === foodX && snakeY === foodY) {
+    snakeBiteAudio.play();
     changeFoodPosition();
     snakeBody.push([foodX, foodY]);
     score++;
