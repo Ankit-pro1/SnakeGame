@@ -41,16 +41,24 @@ body{
 }
 .game-board .snake{
     background-color: #0087fd;
-    border-radius: 50%;
+    /* border-radius: 50%; */
 }
 .controls{
     display: flex;
     justify-content: space-around;
     align-items: center;
     padding: 4px 0;
+    display: none;
 }
 .controls i{
     font-size: 18px;
     padding: 16px;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 576px){
+   .controls{
+    display: flex;
+   }
+
 }
